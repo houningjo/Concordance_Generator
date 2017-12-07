@@ -23,37 +23,9 @@ ConcordanceData::ConcordanceData(const string otherKey, const string before, con
     
 }
 
-//ConcordanceData::ConcordanceData(const ConcordanceData& other){
-//    key = other.key;
-//    
-//    contextList = LinkedList(other.contextList);
-//    cout << "copy constructor here." << endl;
-//}
-
-//ConcordanceData::~ConcordanceData(){
-//    cout << "destructor needed here." << endl;
-//}
-
-// methods
-//string ConcordanceData::getKey() const{
-//    return key;
-//}
-
-//LinkedList ConcordanceData::getContextList() const{
-//    return contextList;
-//}
-
 void ConcordanceData::update(const string before, const string after){
     contextList.insertTail(before, after);
 }
-
-//void ConcordanceData::setKey(string newKey){
-//
-//}
-//
-//void ConcordanceData::setContextList(LinkedList& otherList){
-//
-//}
 
 bool ConcordanceData::operator > (const ConcordanceData& other){
     if(key > other.key){
@@ -74,6 +46,28 @@ bool ConcordanceData::operator <(const ConcordanceData& other){
         return true;
     }
     return false;
+}
+
+const ConcordanceData& ConcordanceData::operator = (const ConcordanceData& other){
+    // avoids self assignment
+    if (this == &other){
+        return *this;
+    }
+    this->key = other.key;
+    
+    this->contextList.clear();
+    
+    Node *curr = other.contextList.getHead();
+    
+    // traverse each node in the copyFrom
+    // create a node in this with the digit value
+    // of copyFrom
+    while(curr != nullptr){
+        this->contextList.insertTail(curr->before, curr->after);
+        curr = curr->next;
+    }
+    
+    return *this;
 }
 
 ostream& operator << (ostream& output, const ConcordanceData& other){

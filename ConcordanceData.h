@@ -43,6 +43,9 @@ public:
     bool operator ==(const ConcordanceData& other);
     
     bool operator <(const ConcordanceData& other);
+
+    const ConcordanceData& operator = (const ConcordanceData& other);
+
     
     friend ostream& operator << (ostream& output, const ConcordanceData& theContextList);
     
