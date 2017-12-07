@@ -3,7 +3,7 @@
 // Copyright © 2017 Ning Hou. All rights reserved.
 
 /** @file LinkedList.h*/
-/** This LinkedList class creates a DlinkedList object which is a
+/** This LinkedList class creates a linkedList object which is a
  * singly linked list.
  */
 
